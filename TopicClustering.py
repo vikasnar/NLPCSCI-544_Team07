@@ -21,7 +21,7 @@ original_comments = []
 # Number of comments to Fetch within cluster
 k = 5
 # Json file containing the comments
-comments_file = '/Users/sridharyadav/Downloads/SenTube/tablets_IT/video__fKtsmt2-00-annotator:Agata.json'
+comments_file = 'test.json'
 
 
 def rankcomments(orig_commentcluster, commentcluster, k):
