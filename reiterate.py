@@ -9,6 +9,23 @@ sys.setdefaultencoding('utf8')
 
 it_stop = get_stop_words('italian')
 
+def tf(word, blob):
+    return blob.words.count(word) / len(blob.words)
+
+def n_containing(word, bloblist):
+    return sum(1 for blob in bloblist if word in blob)
+
+def idf(word, bloblist):
+    return math.log(len(bloblist) / (1 + n_containing(word, bloblist)))
+
+def tfidf(word, blob, bloblist):
+    return tf(word, blob) * idf(word, bloblist)
+
+def get_nonstop_words(text):
+    tokens = text.split()
+    stopped_tokens = [i for i in tokens if not i in it_stop]
+    return stopped_tokens
+
 summary_text = eval(open("summary.txt").read())
 input_text = eval(open("input.txt").read())
 
